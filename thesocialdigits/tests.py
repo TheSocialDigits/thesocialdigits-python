@@ -27,10 +27,16 @@ class TheSocialDigitsAPITest(unittest.TestCase):
         self.assertEqual(type(basic_result), list)
     
     def test_campaign_customers(self):
-        pass
+        basic_result = api.campaign_customers('', 'english', [], 'strong')
+        
+        self.assertEqual(type(basic_result), list)
+        self.assertEqual(len(basic_result), 0)
     
     def test_category_popular(self):
-        pass
+        basic_result = api.category_popular(-1, 10)
+        
+        self.assertEqual(type(basic_result), list)
+        self.assertEqual(len(basic_result), 0)
     
     def test_customer_related(self):
         basic_result = api.related([1,2,3], 10)
@@ -76,5 +82,5 @@ class TheSocialDigitsAPITest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    api.config.key = raw_input('API key: ')
+    api.config.key = 'xSrDcW401rnXiBkEfjOKAs2YPaGMFW0q'#raw_input('API key: ')
     unittest.main()
