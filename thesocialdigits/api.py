@@ -29,6 +29,32 @@ class DownForMaitenence(Exception):
 
 ### API Methods ###
 
+def add_sale(customer, sale, products, visitor=None):
+    """
+    Adds a sale made by a visitor.
+    """
+    args = {'customer': customer,
+            'visitor': visitor,
+            'sale': sale,
+            'products': products}
+    
+    __call('add_sale', args, config.timeout_single)
+    
+def add_product(id, name, description, price, category, rating=.5, **attributes):
+    """
+    Adds a product. If the product already exists it is updated with the given
+    information.
+    """
+    args = {'id': id,
+            'name': name,
+            'description': description,
+            'price': price,
+            'category': category,
+            'rating': rating}
+    args.update(attributes)
+    
+    __call('add_product', args, config.timeout_single)
+
 def alternative(products, limit, visitor=None, exclude=None, filter=None):
     """
     Returns a list of product alternatives.
@@ -123,17 +149,6 @@ def popular(limit, visitor=None, exclude=None, filter=None):
     
     return result['result']
 
-def purchase(customer, sale, products, visitor=None):
-    """
-    Logs a purchase made by a visitor.
-    """
-    args = {'customer': customer,
-            'visitor': visitor,
-            'sale': sale,
-            'products': products}
-    
-    __call('purchase', args, config.timeout_single)
-
 def related(products, limit, visitor=None, exclude=None, filter=None):
     """
     Returns a list of related products.
@@ -147,6 +162,15 @@ def related(products, limit, visitor=None, exclude=None, filter=None):
     result = __call('related', args, config.timeout_single)
     
     return result['result']  
+
+def remove_product(id):
+    """
+    Removes a product.
+    """
+    
+    args = {'id': id}
+    
+    result = __call('remove_product', args, config.timeout_single)
 
 def search(query, language, limit, longtail=False, visitor=None, exclude=None, filter=None):
     """
