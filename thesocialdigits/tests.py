@@ -50,9 +50,6 @@ class TheSocialDigitsAPITest(unittest.TestCase):
         self.assertEqual(type(basic_result), list)
         self.assertEqual(len(basic_result), 10)
     
-    def test_purchase(self):
-        pass
-    
     def test_related(self):
         basic_result = api.related([1,2,3], 10)
         
