@@ -29,17 +29,6 @@ class DownForMaitenence(Exception):
 
 ### API Methods ###
 
-def add_sale(customer, sale, products, visitor=None):
-    """
-    Adds a sale made by a visitor.
-    """
-    args = {'customer': customer,
-            'visitor': visitor,
-            'sale': sale,
-            'products': products}
-    
-    __call('add_sale', args, config.timeout_single)
-    
 def add_product(id, name, description, price, category, rating=.5, **attributes):
     """
     Adds a product. If the product already exists it is updated with the given
@@ -55,6 +44,17 @@ def add_product(id, name, description, price, category, rating=.5, **attributes)
     
     __call('add_product', args, config.timeout_single)
 
+def add_sale(customer, sale, products, visitor=None):
+    """
+    Adds a sale made by a visitor.
+    """
+    args = {'customer': customer,
+            'visitor': visitor,
+            'sale': sale,
+            'products': products}
+    
+    __call('add_sale', args, config.timeout_single)
+    
 def alternative(products, limit, visitor=None, exclude=None, filter=None):
     """
     Returns a list of product alternatives.
