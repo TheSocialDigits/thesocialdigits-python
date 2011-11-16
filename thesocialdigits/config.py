@@ -13,4 +13,4 @@ timeout_mult = 3600
 
 # Returns the customers visitor id. Ideally a md5 hash of the IP and user agent.
 def get_visitor_id():
-    return ''
+    return None
