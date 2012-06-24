@@ -235,7 +235,7 @@ def __call(method, args, timeout):
 
     # build request
     args['key'] = config.key
-    url = 'http://api.thesocialdigits.com/v1/%s' % method
+    url = 'http://%s/%s' % (config.server, method)
     data = json.dumps(args)
     request = urllib2.Request(url, data, {'Content-type': 'application/json'})
     
