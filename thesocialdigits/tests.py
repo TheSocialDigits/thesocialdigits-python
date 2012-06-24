@@ -79,5 +79,5 @@ class TheSocialDigitsAPITest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    api.config.key = 'xSrDcW401rnXiBkEfjOKAs2YPaGMFW0q'#raw_input('API key: ')
+    api.config.key = raw_input('API key: ')
     unittest.main()
