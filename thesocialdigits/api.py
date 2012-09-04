@@ -26,7 +26,13 @@ class TheSocialDigitsAPI(object):
     def __getattr__(self, name):
         def __call(**kwargs):
             timeout = kwargs.pop('timeout', None)
-            return self.__call(name, kwargs, timeout)['result']
+            
+            response = self.__call(name, kwargs, timeout)
+
+            if 'result' in response:
+                return response['result']
+            elif 'results' in response:
+                return response['results']
 
         return __call
 
