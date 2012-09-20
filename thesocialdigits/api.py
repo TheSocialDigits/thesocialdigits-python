@@ -29,10 +29,14 @@ class TheSocialDigitsAPI(object):
             
             response = self.__call(name, kwargs, timeout)
 
-            if 'result' in response:
-                return response['result']
-            elif 'results' in response:
-                return response['results']
+            if not isinstance(response, dict):
+                if 'result' in response:
+                    return response['result']
+                elif 'results' in response:
+                    return response['results']
+
+            return response
+
 
         return __call
 
@@ -45,6 +49,9 @@ class TheSocialDigitsAPI(object):
         
         # call the server and fetch/decode response
         response = json.load(urllib2.urlopen(request, timeout=timeout))
+
+        if not isinstance(response, dict) or 'status' not in response:
+            return response
 
         # handle response
         if response['status'] == 'ok':
