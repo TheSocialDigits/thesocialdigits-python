@@ -29,7 +29,7 @@ class TheSocialDigitsAPI(object):
             
             response = self.__call(name, kwargs, timeout)
 
-            if not isinstance(response, dict):
+            if isinstance(response, dict):
                 if 'result' in response:
                     return response['result']
                 elif 'results' in response:
