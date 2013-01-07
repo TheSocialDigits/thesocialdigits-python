@@ -3,6 +3,8 @@ Python bindings for The Social Digits API
 
 This is a simple language binding for accessing The Social Digits API from Python.
 
+__NOTE: This package only works for the deprecated API v1. A new version for API v2 will be comming soon.__
+
 
 Setup
 =====
